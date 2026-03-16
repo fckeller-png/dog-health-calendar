@@ -17,7 +17,7 @@ export interface DogData {
   lastDewormingDate: string;
   dewormingFrequency: DewormingFrequency;
   lastFleaTreatmentDate: string;
-  fleaTreatmentFrequency: 'monthly' | 'quarterly';
+  fleaTreatmentFrequency: 'monthly' | 'quarterly' | 'eighthmonths';
 }
 
 export interface HealthEvent {

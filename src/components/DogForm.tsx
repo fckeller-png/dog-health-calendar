@@ -37,9 +37,10 @@ const DEWORMING_FREQ_OPTIONS: { value: DewormingFrequency; label: string; sub: s
   { value: 'semiannual', label: 'Semestral', sub: 'Ex: uso único' },
 ];
 
-const FLEA_FREQ_OPTIONS: { value: 'monthly' | 'quarterly'; label: string; sub: string }[] = [
+const FLEA_FREQ_OPTIONS: { value: 'monthly' | 'quarterly' | 'eighthmonths'; label: string; sub: string }[] = [
   { value: 'monthly', label: 'Mensal', sub: 'Ex: Frontline, pipeta' },
   { value: 'quarterly', label: 'Trimestral', sub: 'Ex: Bravecto comprimido' },
+  { value: 'eighthmonths', label: '8 meses', sub: 'Ex: Coleira Seresto' },
 ];
 
 function ageRangeToBirthDate(months: number): string {
