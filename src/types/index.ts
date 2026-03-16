@@ -39,7 +39,7 @@ export interface HealthPlan {
 
 export const SIZE_LABELS: Record<DogSize, string> = {
   small: 'Pequeno',
-  medium: 'Médio',
+  medium: 'Medio',
   large: 'Grande',
 };
 
@@ -55,18 +55,15 @@ export const DEWORMING_FREQUENCY_LABELS: Record<DewormingFrequency, string> = {
   semiannual: 'Semestral',
 };
 
-export const EVENT_TYPE_CONFIG: Record
-  EventType,
-  { emoji: string; label: string; badgeClass: string }
-> = {
+export const EVENT_TYPE_CONFIG: Record<EventType, { emoji: string; label: string; badgeClass: string }> = {
   vaccine: {
     emoji: '💉',
-    label: 'Vacinação',
+    label: 'Vacinacao',
     badgeClass: 'bg-blue-100 text-blue-700',
   },
   deworming: {
     emoji: '💊',
-    label: 'Vermífugo',
+    label: 'Vermifugo',
     badgeClass: 'bg-purple-100 text-purple-700',
   },
   flea: {
