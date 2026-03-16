@@ -2,22 +2,17 @@ export type DogSize = 'small' | 'medium' | 'large';
 export type ActivityLevel = 'low' | 'medium' | 'high';
 export type EventType = 'vaccine' | 'deworming' | 'flea' | 'checkup';
 export type AppScreen = 'landing' | 'form' | 'loading' | 'results' | 'success';
-export type DewormingFrequency = 'monthly' | 'quarterly' | 'semiannual';
 
 export interface DogData {
   name: string;
-  birthDate: string;
+  birthDate: string;          // ISO date string, e.g. "2023-06-15"
   breed: string;
   size: DogSize;
-  weight: string;
+  weight: string;             // kg, stored as string for input compatibility
   activityLevel: ActivityLevel;
   city: string;
   country: string;
-  lastVaccineDate: string;
-  lastDewormingDate: string;
-  dewormingFrequency: DewormingFrequency;
-  lastFleaTreatmentDate: string;
-  fleaTreatmentFrequency: 'monthly' | 'quarterly';
+  hasVaccinationHistory: boolean;
 }
 
 export interface HealthEvent {
@@ -26,8 +21,11 @@ export interface HealthEvent {
   type: EventType;
   title: string;
   description: string;
+  /** RRULE string for recurring events, e.g. "RRULE:FREQ=MONTHLY;COUNT=12" */
   rrule?: string;
+  /** Human-readable frequency label, e.g. "Mensal" */
   frequencyLabel?: string;
+  /** How many times the event recurs (for Google Calendar display) */
   recurrenceCount?: number;
 }
 
@@ -49,13 +47,7 @@ export const ACTIVITY_LABELS: Record<ActivityLevel, string> = {
   high: 'Alto',
 };
 
-export const DEWORMING_FREQUENCY_LABELS: Record<DewormingFrequency, string> = {
-  monthly: 'Mensal',
-  quarterly: 'Trimestral',
-  semiannual: 'Semestral',
-};
-
-export const EVENT_TYPE_CONFIG: Record
+export const EVENT_TYPE_CONFIG: Record<
   EventType,
   { emoji: string; label: string; badgeClass: string }
 > = {
@@ -70,12 +62,12 @@ export const EVENT_TYPE_CONFIG: Record
     badgeClass: 'bg-purple-100 text-purple-700',
   },
   flea: {
-    emoji: '🐛',
+    emoji: '🛡️',
     label: 'Antipulgas',
     badgeClass: 'bg-orange-100 text-orange-700',
   },
   checkup: {
-    emoji: '🏥',
+    emoji: '🩺',
     label: 'Check-up',
     badgeClass: 'bg-green-100 text-green-700',
   },

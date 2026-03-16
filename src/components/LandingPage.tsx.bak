@@ -13,27 +13,27 @@ export default function LandingPage({ onStart }: LandingPageProps) {
 
       {/* Hero */}
       <main className="flex-1 container mx-auto px-6 py-10 flex flex-col items-center text-center max-w-3xl">
-        <div className="text-8xl mb-6">🐶</div>
+        <div className="text-8xl mb-6 animate-bounce-slow">🐕</div>
 
         <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-5">
-          Faça um diagnóstico e crie o
+          O plano de saúde completo
           <br />
-          <span className="text-green-600">calendário anual do seu cachorro</span>.
+          <span className="text-green-600">do seu cachorro</span>, em minutos.
         </h1>
 
         <p className="text-lg text-gray-600 mb-3 max-w-xl leading-relaxed">
-          Informe os dados do seu pet e receba um calendário com vacinas,
-          vermífugos e antipulgas — baseado no histórico real dele.
+          Informe os dados básicos do seu pet e receba um calendário anual personalizado —
+          vacinas, vermífugos, antipulgas e check-ups — direto no seu Google Calendar.
         </p>
         <p className="text-sm text-gray-400 mb-10">
-          Sem cadastro. Sem custo.
+          Sem cadastro. Sem custo. Configure uma vez e esqueça.
         </p>
 
         <button
           onClick={onStart}
           className="bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-bold px-10 py-4 rounded-2xl text-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:-translate-y-0.5 mb-4"
         >
-          🐾 Fazer diagnóstico e criar calendário
+          Criar plano de saúde grátis 🐾
         </button>
 
         <p className="text-xs text-gray-400 mb-16">
@@ -45,8 +45,8 @@ export default function LandingPage({ onStart }: LandingPageProps) {
           {[
             {
               emoji: '📋',
-              title: 'Baseado no histórico real',
-              desc: 'Informe as últimas datas de vacina, vermífugo e antipulga — o calendário parte dali',
+              title: 'Plano personalizado',
+              desc: 'Baseado na raça, idade, porte e estilo de vida do seu pet',
             },
             {
               emoji: '📅',
@@ -55,8 +55,8 @@ export default function LandingPage({ onStart }: LandingPageProps) {
             },
             {
               emoji: '🎯',
-              title: 'Frequência correta',
-              desc: 'Vermífugo mensal, trimestral ou semestral — conforme o produto que você usa',
+              title: 'Zero esforço',
+              desc: 'Configure uma vez e deixe os lembretes cuidarem do resto',
             },
           ].map((item) => (
             <div
@@ -68,6 +68,27 @@ export default function LandingPage({ onStart }: LandingPageProps) {
               <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
             </div>
           ))}
+        </div>
+
+        {/* What's included */}
+        <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-6 w-full text-left mb-10">
+          <h2 className="font-bold text-gray-800 mb-4 text-center">O que está incluído no plano</h2>
+          <div className="grid grid-cols-2 gap-3">
+            {[
+              { emoji: '💉', label: 'Vacinação', desc: 'Datas das vacinas anuais' },
+              { emoji: '💊', label: 'Vermífugo', desc: 'Controle trimestral' },
+              { emoji: '🛡️', label: 'Antipulgas', desc: 'Proteção mensal' },
+              { emoji: '🩺', label: 'Check-up', desc: 'Consulta preventiva anual' },
+            ].map((item) => (
+              <div key={item.label} className="flex items-start gap-3">
+                <span className="text-2xl">{item.emoji}</span>
+                <div>
+                  <p className="font-semibold text-gray-800 text-sm">{item.label}</p>
+                  <p className="text-gray-500 text-xs">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </main>
 
