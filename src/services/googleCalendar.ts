@@ -47,7 +47,7 @@ function waitForGIS(): Promise<void> {
 }
 
 async function requestAccessToken(): Promise<string> {
-  const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined;
+  const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '296723737308-8b3dqg883erm82l4hl749kc90qad2v9m.apps.googleusercontent.com';
 
   if (!clientId || clientId.trim() === '' || clientId.includes('seu-client-id')) {
     throw new Error('GOOGLE_CLIENT_ID_MISSING');
@@ -162,6 +162,5 @@ export async function addEventsToCalendar(
  * Returns true if a Google Client ID is configured in the environment
  */
 export function isGoogleCalendarConfigured(): boolean {
-  const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined;
-  return Boolean(clientId && clientId.trim() !== '' && !clientId.includes('seu-client-id'));
+  return true;
 }
