@@ -47,11 +47,7 @@ function waitForGIS(): Promise<void> {
 }
 
 async function requestAccessToken(): Promise<string> {
-  const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID || '296723737308-8b3dqg883erm82l4hl749kc90qad2v9m.apps.googleusercontent.com';
-
-  if (!clientId || clientId.trim() === '' || clientId.includes('seu-client-id')) {
-    throw new Error('GOOGLE_CLIENT_ID_MISSING');
-  }
+  const clientId = '296723737308-8b3dqg883erm82l4hl749kc90qad2v9m.apps.googleusercontent.com';
 
   await waitForGIS();
 
