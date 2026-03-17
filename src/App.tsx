@@ -7,6 +7,7 @@ import DogForm from './components/DogForm';
 import LoadingScreen from './components/LoadingScreen';
 import ResultsPage from './components/ResultsPage';
 import SuccessPage from './components/SuccessPage';
+import PrivacyPolicy from './components/PrivacyPolicy';
 
 export default function App() {
   const [screen, setScreen] = useState<AppScreen>('landing');
@@ -60,7 +61,7 @@ export default function App() {
   return (
     <div className="font-sans">
       {screen === 'landing' && (
-        <LandingPage onStart={() => setScreen('form')} />
+        <LandingPage onStart={() => setScreen('form')} onPrivacy={() => setScreen('privacy')} />
       )}
 
       {screen === 'form' && (
@@ -86,6 +87,10 @@ export default function App() {
           eventsCount={eventsAddedCount}
           onRestart={handleRestart}
         />
+      )}
+
+      {screen === 'privacy' && (
+        <PrivacyPolicy onBack={() => setScreen('landing')} />
       )}
     </div>
   );

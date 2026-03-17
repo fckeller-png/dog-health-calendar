@@ -1,8 +1,9 @@
 interface LandingPageProps {
   onStart: () => void;
+  onPrivacy: () => void;
 }
 
-export default function LandingPage({ onStart }: LandingPageProps) {
+export default function LandingPage({ onStart, onPrivacy }: LandingPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 via-white to-amber-50 flex flex-col">
       {/* Header */}
@@ -72,10 +73,15 @@ export default function LandingPage({ onStart }: LandingPageProps) {
       </main>
 
       {/* Footer */}
-      <footer className="text-center py-6 px-4">
+      <footer className="text-center py-6 px-4 space-y-2">
         <p className="text-xs text-gray-400 max-w-md mx-auto">
           ⚠️ <strong>Aviso:</strong> Este aplicativo não substitui a orientação de um veterinário.
           Sempre confirme as datas e cuidados com um profissional de saúde animal.
+        </p>
+        <p className="text-xs text-gray-400">
+          <button onClick={onPrivacy} className="text-green-600 hover:underline">
+            Política de Privacidade
+          </button>
         </p>
       </footer>
     </div>
