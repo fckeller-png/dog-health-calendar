@@ -1,7 +1,7 @@
 export type DogSize = 'small' | 'medium' | 'large';
 export type ActivityLevel = 'low' | 'medium' | 'high';
 export type EventType = 'vaccine' | 'deworming' | 'flea' | 'checkup';
-export type AppScreen = 'landing' | 'form' | 'loading' | 'results' | 'success' | 'privacy';
+export type AppScreen = 'landing' | 'form' | 'loading' | 'results' | 'success';
 export type DewormingFrequency = 'monthly' | 'quarterly' | 'semiannual';
 
 export interface DogData {

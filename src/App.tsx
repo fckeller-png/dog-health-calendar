@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { DogData, HealthPlan, AppScreen } from './types';
 import { generateHealthEvents, getDogImageUrl } from './services/healthPlan';
 import { generateDiagnosis } from './services/openai';
@@ -58,40 +59,45 @@ export default function App() {
     setScreen('landing');
   }
 
+  function MainApp() {
+    return (
+      <div className="font-sans">
+        {screen === 'landing' && (
+          <LandingPage onStart={() => setScreen('form')} />
+        )}
+
+        {screen === 'form' && (
+          <DogForm initialData={dogData} onSubmit={handleFormSubmit} />
+        )}
+
+        {screen === 'loading' && (
+          <LoadingScreen dogName={dogData?.name ?? ''} />
+        )}
+
+        {screen === 'results' && healthPlan && dogData && (
+          <ResultsPage
+            dog={dogData}
+            plan={healthPlan}
+            onCalendarSuccess={handleCalendarSuccess}
+            onEditDog={() => setScreen('form')}
+          />
+        )}
+
+        {screen === 'success' && dogData && (
+          <SuccessPage
+            dogName={dogData.name}
+            eventsCount={eventsAddedCount}
+            onRestart={handleRestart}
+          />
+        )}
+      </div>
+    );
+  }
+
   return (
-    <div className="font-sans">
-      {screen === 'landing' && (
-        <LandingPage onStart={() => setScreen('form')} onPrivacy={() => setScreen('privacy')} />
-      )}
-
-      {screen === 'form' && (
-        <DogForm initialData={dogData} onSubmit={handleFormSubmit} />
-      )}
-
-      {screen === 'loading' && (
-        <LoadingScreen dogName={dogData?.name ?? ''} />
-      )}
-
-      {screen === 'results' && healthPlan && dogData && (
-        <ResultsPage
-          dog={dogData}
-          plan={healthPlan}
-          onCalendarSuccess={handleCalendarSuccess}
-          onEditDog={() => setScreen('form')}
-        />
-      )}
-
-      {screen === 'success' && dogData && (
-        <SuccessPage
-          dogName={dogData.name}
-          eventsCount={eventsAddedCount}
-          onRestart={handleRestart}
-        />
-      )}
-
-      {screen === 'privacy' && (
-        <PrivacyPolicy onBack={() => setScreen('landing')} />
-      )}
-    </div>
+    <Routes>
+      <Route path="/" element={<MainApp />} />
+      <Route path="/privacy" element={<PrivacyPolicy />} />
+    </Routes>
   );
 }

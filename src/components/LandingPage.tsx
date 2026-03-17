@@ -1,9 +1,10 @@
+import { Link } from 'react-router-dom';
+
 interface LandingPageProps {
   onStart: () => void;
-  onPrivacy: () => void;
 }
 
-export default function LandingPage({ onStart, onPrivacy }: LandingPageProps) {
+export default function LandingPage({ onStart }: LandingPageProps) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 via-white to-amber-50 flex flex-col">
       {/* Header */}
@@ -79,9 +80,9 @@ export default function LandingPage({ onStart, onPrivacy }: LandingPageProps) {
           Sempre confirme as datas e cuidados com um profissional de saúde animal.
         </p>
         <p className="text-xs text-gray-400">
-          <button onClick={onPrivacy} className="text-green-600 hover:underline">
+          <Link to="/privacy" className="text-green-600 hover:underline">
             Política de Privacidade
-          </button>
+          </Link>
         </p>
       </footer>
     </div>

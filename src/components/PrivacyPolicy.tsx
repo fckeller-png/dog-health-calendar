@@ -1,8 +1,6 @@
-interface PrivacyPolicyProps {
-  onBack: () => void;
-}
+import { Link } from 'react-router-dom';
 
-export default function PrivacyPolicy({ onBack }: PrivacyPolicyProps) {
+export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 via-white to-amber-50">
       <header className="container mx-auto px-6 py-5 flex items-center gap-2">
@@ -11,12 +9,12 @@ export default function PrivacyPolicy({ onBack }: PrivacyPolicyProps) {
       </header>
 
       <main className="container mx-auto px-6 py-10 max-w-3xl">
-        <button
-          onClick={onBack}
+        <Link
+          to="/"
           className="text-green-600 hover:text-green-700 font-medium mb-8 flex items-center gap-1"
         >
           ← Voltar
-        </button>
+        </Link>
 
         <h1 className="text-3xl font-extrabold text-gray-900 mb-2">Política de Privacidade</h1>
         <p className="text-sm text-gray-400 mb-10">Última atualização: março de 2026</p>
